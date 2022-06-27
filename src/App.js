@@ -1,104 +1,71 @@
-import React, { useState, Component } from "react"
-import logo from "./logo.svg"
+import React, { useState } from "react"
 import anime from 'animejs';
 import './App.css';
 import ReactAnime from 'react-animejs'
 import "./App.css"
-
-import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
-import Contact from './Contact'
 
 
-
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: false, msg: null }
-  }
-
-  handleClick = api => e => {
-    e.preventDefault()
-
-    this.setState({ loading: true })
-    fetch("/.netlify/functions/" + api)
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }))
-  }
-
-  render() {
-    const { loading, msg } = this.state
-
-    return (
-      <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
-        <br />
-        <span>{msg}</span>
-      </p>
-    )
-  }
-}
 
 function App() {
-    const [isShown, setIsShown] = useState(false);
-    const [isShowContact, setIsShowContact] = useState(false)
-    const [isShowMain, setIsShowMain] = useState(true)
+  const [isShown, setIsShown] = useState(false);
+  // const [isShowContact, setIsShowContact] = useState(false)
+  // const [isShowMain, setIsShowMain] = useState(true)
 
-    const { Anime, stagger } = ReactAnime
+  const { Anime } = ReactAnime
   var path = anime.path('#Box');
 
-  const openMail = () => {
-    setIsShowContact(!isShowContact)
-    setIsShowMain(!isShowMain)
-  }
+  // const openMail = () => {
+  //   setIsShowContact(!isShowContact)
+  //   setIsShowMain(!isShowMain)
+  // }
 
-    return (
+  return (
     <div className='main-container'>
-      {
+      {/* {
         isShowContact ? <Contact /> : null
-      }
+      } */}
 
-      {
-        isShowMain ?
+      {/* {
+        isShowMain ? */}
 
-          <div className='flex-content-div'>
-            <Anime
-              initial={
-                [
-                  {
-                    targets: ".svg",
-                    strokeDashoffset: [anime.setDashoffset, 0],
-                    easing: 'easeInOutSine',
-                    duration: 10000,
-                    delay: function (el, i) { return i * 250 },
-                    direction: 'alternate',
-                    loop: true
-                  }
-                ]
+      <div className='flex-content-div'>
+        <Anime
+          initial={
+            [
+              {
+                targets: ".svg",
+                strokeDashoffset: [anime.setDashoffset, 0],
+                easing: 'easeInOutSine',
+                duration: 10000,
+                delay: function (el, i) { return i * 250 },
+                direction: 'alternate',
+                loop: true
               }
-            >
-              <svg width="750px" height="200px" xmlns="http://www.w3.org/2000/svg" viewBox="34.5 10.400000000000006 431 129.2" style={{ background: "none", stroke: '#4F86C9' }} preserveAspectRatio="xMidYMid">
-                <defs>
-                  <linearGradient id="editing-outline-gradient" x1="-0.41354545764260087" x2="1.4135454576426008" y1="0.09326335692419985" y2="0.9067366430758002">
-                    <stop offset="0" stopColor="#1087b0"></stop>
-                    <stop offset="1" stopColor="#0a5ee7"></stop>
-                  </linearGradient>
-                  <filter id="editing-outline" x="-100%" y="-100%" width="300%" height="300%">
-                    <feMorphology in="SourceGraphic" operator="dilate" radius="1" result="outline"></feMorphology>
-                    <feComposite operator="out" in="outline" in2="SourceAlpha"></feComposite>
-                  </filter>
-                </defs>
-                <g filter="url(#editing-outline)">
-                  <g className="svgStyle" style={{
+            ]
+          }
+        >
+          <svg width="750px" height="200px" xmlns="http://www.w3.org/2000/svg" viewBox="34.5 10.400000000000006 431 129.2" style={{ background: "none", stroke: '#4F86C9' }} preserveAspectRatio="xMidYMid">
+            <defs>
+              <linearGradient id="editing-outline-gradient" x1="-0.41354545764260087" x2="1.4135454576426008" y1="0.09326335692419985" y2="0.9067366430758002">
+                <stop offset="0" stopColor="#1087b0"></stop>
+                <stop offset="1" stopColor="#0a5ee7"></stop>
+              </linearGradient>
+              <filter id="editing-outline" x="-100%" y="-100%" width="300%" height="300%">
+                <feMorphology in="SourceGraphic" operator="dilate" radius="1" result="outline"></feMorphology>
+                <feComposite operator="out" in="outline" in2="SourceAlpha"></feComposite>
+              </filter>
+            </defs>
+            <g filter="url(#editing-outline)">
+              <g className="svgStyle" style={{
 
-                  }} transform="translate(100.1749849319458, 105.07999992370605)">
-                    <path style={{
-                      fontFamily: 'Anek Tamil',
-                      dominantBaseline: "central",
-                      textAnchor: "middle", color: '#4F86C9', fill: 'white', stroke: "", strokeWidth: "3px"
-                    }} className="svg"
-                      d="M32.70-32.70L32.70-32.70Q33.54-32.70 34.08-32.16L34.08-32.16L34.08-32.16Q34.62-31.62 34.62-30.72L34.62-30.72L34.62-3.01L34.62-3.01Q34.62 1.98 32.54 5.54L32.54 5.54L32.54 5.54Q30.46 9.09 26.85 10.94L26.85 10.94L26.85 10.94Q23.23 12.80 18.56 12.80L18.56 12.80L18.56 12.80Q16.32 12.80 13.86 12.22L13.86 12.22L13.86 12.22Q11.39 11.65 9.63 10.75L9.63 10.75L9.63 10.75Q7.87 9.86 7.62 
+              }} transform="translate(100.1749849319458, 105.07999992370605)">
+                <path style={{
+                  fontFamily: 'Anek Tamil',
+                  dominantBaseline: "central",
+                  textAnchor: "middle", color: '#4F86C9', fill: 'white', stroke: "", strokeWidth: "3px"
+                }} className="svg"
+                  d="M32.70-32.70L32.70-32.70Q33.54-32.70 34.08-32.16L34.08-32.16L34.08-32.16Q34.62-31.62 34.62-30.72L34.62-30.72L34.62-3.01L34.62-3.01Q34.62 1.98 32.54 5.54L32.54 5.54L32.54 5.54Q30.46 9.09 26.85 10.94L26.85 10.94L26.85 10.94Q23.23 12.80 18.56 12.80L18.56 12.80L18.56 12.80Q16.32 12.80 13.86 12.22L13.86 12.22L13.86 12.22Q11.39 11.65 9.63 10.75L9.63 10.75L9.63 10.75Q7.87 9.86 7.62 
        8.90L7.62 8.90L7.62 8.90Q7.17 8.45 7.17 7.87L7.17 7.87L7.17 7.87Q7.17 7.23 7.74 6.85L7.74 6.85L7.74 6.85Q8 6.66 8.38 6.66L8.38 6.66L8.38 6.66Q8.77 6.66 9.86 7.10L9.86 7.10L11.20 7.68L11.20 7.68Q15.17 9.22 18.62 9.22L18.62 9.22L18.62 9.22Q24.32 9.22 27.55 5.98L27.55 5.98L27.55 5.98Q30.78 2.75 30.78-2.75L30.78-2.75L30.78-6.72L30.78-6.72Q29.18-3.26 25.73-1.31L25.73-1.31L25.73-1.31Q22.27 
        0.64 18.50 0.64L18.50 0.64L18.50 0.64Q14.08 0.64 10.53-1.57L10.53-1.57L10.53-1.57Q6.98-3.78 4.93-7.68L4.93-7.68L4.93-7.68Q2.88-11.58 2.88-16.45L2.88-16.45L2.88-16.45Q2.88-21.25 4.93-25.15L4.93-25.15L4.93-25.15Q6.98-29.06 10.53-31.26L10.53-31.26L10.53-31.26Q14.08-33.47 
        18.43-33.47L18.43-33.47L18.43-33.47Q22.46-33.47 25.82-31.46L25.82-31.46L25.82-31.46Q29.18-29.44 30.78-26.62L30.78-26.62L30.78-30.72L30.78-30.72Q30.78-31.55 31.33-32.13L31.33-32.13L31.33-32.13Q31.87-32.70 32.70-32.70L32.70-32.70ZM18.82-2.94L18.82-2.94Q22.34-2.94 
@@ -130,46 +97,46 @@ function App() {
        218.62-32.51L218.62-32.51L218.62-32.51Q219.46-32.51 220-31.97L220-31.97L220-31.97Q220.54-31.42 220.54-30.59L220.54-30.59L220.54-27.07L220.54-27.07Q222.27-29.82 225.50-31.65L225.50-31.65L225.50-31.65Q228.74-33.47 232.13-33.47L232.13-33.47ZM249.15 12.67L249.15 12.67Q248.38 12.67 247.87 12.16L247.87 
        12.16L247.87 12.16Q247.36 11.65 247.36 10.88L247.36 10.88L247.36 10.62L247.36 10.62Q247.36 9.92 247.81 9.44L247.81 9.44L247.81 9.44Q248.26 8.96 249.02 8.83L249.02 8.83L249.02 8.83Q251.39 8.38 252.96 6.75L252.96 6.75L252.96 6.75Q254.53 5.12 254.53 2.37L254.53 2.37L254.53-30.66L254.53-30.66Q254.53-31.49 
        255.07-32.03L255.07-32.03L255.07-32.03Q255.62-32.58 256.45-32.58L256.45-32.58L256.45-32.58Q257.28-32.58 257.82-32.03L257.82-32.03L257.82-32.03Q258.37-31.49 258.37-30.66L258.37-30.66L258.37 2.94L258.37 2.94Q258.37 5.89 256.99 8.10L256.99 8.10L256.99 8.10Q255.62 10.30 253.47 11.49L253.47 11.49L253.47 11.49Q251.33 12.67 249.15 12.67L249.15 12.67ZM256.45-37.63L256.45-37.63Q255.17-37.63 254.46-38.24L254.46-38.24L254.46-38.24Q253.76-38.85 253.76-40L253.76-40L253.76-40.64L253.76-40.64Q253.76-41.79 254.50-42.40L254.50-42.40L254.50-42.40Q255.23-43.01 256.51-43.01L256.51-43.01L256.51-43.01Q259.07-43.01 259.07-40.64L259.07-40.64L259.07-40L259.07-40Q259.07-38.85 258.40-38.24L258.40-38.24L258.40-38.24Q257.73-37.63 256.45-37.63L256.45-37.63ZM296.77-18.24L296.77-18.24Q296.77-17.47 296.19-16.93L296.19-16.93L296.19-16.93Q295.62-16.38 294.85-16.38L294.85-16.38L270.66-16.38L270.66-16.38Q270.66-12.54 272.22-9.50L272.22-9.50L272.22-9.50Q273.79-6.46 276.70-4.70L276.70-4.70L276.70-4.70Q279.62-2.94 283.58-2.94L283.58-2.94L283.58-2.94Q286.66-2.94 289.09-4.22L289.09-4.22L289.09-4.22Q291.52-5.50 292.99-7.49L292.99-7.49L292.99-7.49Q293.70-8.06 294.34-8.06L294.34-8.06L294.34-8.06Q294.98-8.06 295.49-7.55L295.49-7.55L295.49-7.55Q296.00-7.04 296.00-6.40L296.00-6.40L296.00-6.40Q296.00-5.70 295.36-5.06L295.36-5.06L295.36-5.06Q293.31-2.56 290.21-0.96L290.21-0.96L290.21-0.96Q287.10 0.64 283.65 0.64L283.65 0.64L283.65 0.64Q278.72 0.64 274.94-1.47L274.94-1.47L274.94-1.47Q271.17-3.58 269.06-7.39L269.06-7.39L269.06-7.39Q266.94-11.20 266.94-16.19L266.94-16.19L266.94-16.19Q266.94-21.44 269.02-25.38L269.02-25.38L269.02-25.38Q271.10-29.31 274.56-31.39L274.56-31.39L274.56-31.39Q278.02-33.47 281.92-33.47L281.92-33.47L281.92-33.47Q285.76-33.47 289.12-31.68L289.12-31.68L289.12-31.68Q292.48-29.89 294.59-26.43L294.59-26.43L294.59-26.43Q296.70-22.98 296.77-18.24L296.77-18.24ZM281.92-29.76L281.92-29.76Q278.21-29.76 275.04-27.20L275.04-27.20L275.04-27.20Q271.87-24.64 270.98-19.84L270.98-19.84L292.80-19.84L292.80-20.35L292.80-20.35Q292.48-23.23 290.88-25.38L290.88-25.38L290.88-25.38Q289.28-27.52 286.88-28.64L286.88-28.64L286.88-28.64Q284.48-29.76 281.92-29.76L281.92-29.76Z"
-                    />
-                  </g>
-                </g>
-              </svg>
+                />
+              </g>
+            </g>
+          </svg>
 
-            </Anime>
+        </Anime>
 
-            <h1 className='header'>Welcome to my corner on the internet.</h1>
-            <div>
-              <SocialIcon bgColor="#B0D4FF" className='social-icons' url="https://twitter.com/gyasilinje" />
-              <SocialIcon bgColor='#779DCA' className='social-icons' url="https://instagram.com/gyasilinje" />
-              <button className='yt-btn' onMouseEnter={() => setIsShown(true)}
-                onMouseLeave={() => setIsShown(false)}>
-                <SocialIcon bgColor='#3D5A7D' className='social-icons' url="https://youtube.com/c/gyasilinje" />
-              </button>
-              <SocialIcon bgColor='#4F86C9' className='social-icons' url="https://github.com/gyasi11" />
-              <SocialIcon bgColor='#779CC9' className='social-icons' url="https://linkedin.com/in/gyasi-calhoun" />
-              <SocialIcon onClick={openMail} bgColor='#779CC9' network="email" className='social-icons' />
-            </div>
-            {isShown && (
-              <Anime
-                initial={
-                  [
-                    {
-                      targets: '#subs',
-                      innerHTML: [0, 120000],
-                      easing: 'linear',
-                      round: 10
-                    }
-                  ]
+        <h1 className='header'>Welcome to my corner on the internet.</h1>
+        <div>
+          <SocialIcon bgColor="#B0D4FF" className='social-icons' url="https://twitter.com/gyasilinje" />
+          <SocialIcon bgColor='#779DCA' className='social-icons' url="https://instagram.com/gyasilinje" />
+          <button className='yt-btn' onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}>
+            <SocialIcon bgColor='#3D5A7D' className='social-icons' url="https://youtube.com/c/gyasilinje" />
+          </button>
+          <SocialIcon bgColor='#4F86C9' className='social-icons' url="https://github.com/gyasi11" />
+          <SocialIcon bgColor='#779CC9' className='social-icons' url="https://linkedin.com/in/gyasi-calhoun" />
+          <SocialIcon bgColor='#779CC9' network="email" className='social-icons' />
+        </div>
+        {isShown && (
+          <Anime
+            initial={
+              [
+                {
+                  targets: '#subs',
+                  innerHTML: [0, 120000],
+                  easing: 'linear',
+                  round: 10
                 }
-              >
-                <div className='hover-container'> <div id='subs'></div> <span id="sub-text">subscribers</span></div>
-              </Anime>
-            )}
-          </div>
-          : null
-      }
+              ]
+            }
+          >
+            <div className='hover-container'> <div id='subs'></div> <span id="sub-text">subscribers</span></div>
+          </Anime>
+        )}
+      </div>
+      {/* : null
+      } */}
     </div>
-    )
+  )
 }
 
 export default App
