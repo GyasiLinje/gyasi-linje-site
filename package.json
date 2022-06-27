@@ -5,8 +5,10 @@
   "dependencies": {
     "axios": "^0.19.0",
     "react": "^16.8.6",
+    "react-animejs": "^0.5.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^3.0.1",
+    "react-social-icons": "^5.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
